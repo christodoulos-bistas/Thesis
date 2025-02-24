@@ -1,0 +1,25 @@
+{
+    "": {
+        "functions": [
+            "Grayscale",
+            "Canny Edge Detection",
+            "Histogram Equalization",
+            "Gaussian Blur",
+            "FFT",
+            "High Pass",
+            "Median Blur"
+        ]
+    },
+    "LenaFilter": {
+        "functions": [
+            "Grayscale",
+            "Erosion",
+            "Histogram Equalization",
+            "Gaussian Blur",
+            "Canny Edge Detection",
+            "Gaussian Blur",
+            "Histogram Equalization",
+            "Opening"
+        ]
+    }
+}

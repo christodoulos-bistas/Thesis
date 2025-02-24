@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1680</width>
+    <height>936</height>
+   </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1920</width>
+    <height>1080</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Arial</family>
+    <pointsize>18</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/* Dark mode styles */
+QWidget {
+    background-color: #333; /* Dark background color */
+    color: #ffffff; /* Light text color */
+}
+
+QGroupBox {
+    background-color: transparent; /* Transparent background */
+    border: none; /* No border */
+    margin-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top center;
+    padding: 0 3px;
+}
+
+QGroupBox:focus {
+    border: none;
+}
+
+QPushButton,
+QToolButton {
+    background-color: #6495ED; /* Cornflower Blue background color */
+    color: #ffffff; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px;
+    padding: 8px 16px; /* Adjust padding as needed */
+    min-width: 100px;
+    font-size: 12px; /* Adjust font size as needed */
+    font-weight: bold;
+}
+
+QPushButton:hover,
+QToolButton:hover {
+    background-color: #4169E1; /* Darker blue on hover */
+    cursor: pointer;
+}
+
+QPushButton:pressed,
+QToolButton:pressed {
+    background-color: #1E90FF; /* Darker blue when pressed */
+}
+
+QLineEdit,
+QComboBox {
+    background-color: #666; /* Dark gray background */
+    color: #fff; /* White text color */
+    border: 1px solid #6495ED; /* Blue border */
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 12px; /* Adjust font size as needed */
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: transparent;
+    width: 10px; /* Width of the scrollbar */
+}
+
+QScrollBar::handle:vertical {
+    background: #888; /* Gray scrollbar handle */
+    border-radius: 5px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #aaa; /* Lighter handle color on hover */
+}</string>
+  </property>
+  <property name="documentMode">
+   <bool>true</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>290</y>
+      <width>1191</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>93</x>
+       <y>30</y>
+       <width>1021</width>
+       <height>401</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QLabel" name="label_original">
+        <property name="styleSheet">
+         <string notr="true">border: 2px solid #6495ED; /* Blue border */
+</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_pic">
+        <property name="styleSheet">
+         <string notr="true">QLabel{
+border: 2px solid #6495ED; /* Blue border */
+
+}</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QListWidget" name="functionListWidget">
+    <property name="geometry">
+     <rect>
+      <x>1460</x>
+      <y>220</y>
+      <width>141</width>
+      <height>211</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>750</y>
+      <width>281</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Image Info :</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="dims">
+       <property name="text">
+        <string>W:0 H:0</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>140</y>
+      <width>197</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="QPushButton" name="GrayscaleButton">
+       <property name="text">
+        <string>Grayscale</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="ThreshButton">
+         <property name="text">
+          <string>Binary</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="ThreshspinBox">
+         <property name="maximum">
+          <number>255</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>120</y>
+      <width>175</width>
+      <height>76</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_5">
+     <item>
+      <widget class="QComboBox" name="HistogramcomboBox">
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>HistogramEqualization</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>HistogramStretching</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="HistogramButton">
+       <property name="text">
+        <string>HistogramManipulation</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>110</y>
+      <width>180</width>
+      <height>180</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_7">
+     <item>
+      <widget class="QComboBox" name="MorphologicalcomboBox">
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Erosion</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Dilate</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Opening</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Closing</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>Kernel Size</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox">
+       <property name="minimum">
+        <number>3</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="singleStep">
+        <number>2</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>Shape</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="MorphcomboBox">
+       <item>
+        <property name="text">
+         <string>MORPH_RECT</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MORPH_ELLIPSE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MORPH_CROSS</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="MorphologicalButton">
+       <property name="text">
+        <string>Morphological Operations </string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1460</x>
+      <y>10</y>
+      <width>172</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_10">
+     <item>
+      <widget class="QPushButton" name="FFTButton">
+       <property name="text">
+        <string>Fast Fourier Transform</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="RestoreImageButton">
+       <property name="text">
+        <string>Restore Image</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="borderComboBox">
+       <item>
+        <property name="text">
+         <string>BORDER_CONSTANT</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BORDER_REPLICATE</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BORDER_REFLECT</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BORDER_TRANSPARENT</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BORDER_WRAP</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="FFTspinBox">
+       <property name="minimum">
+        <number>2</number>
+       </property>
+       <property name="maximum">
+        <number>4096</number>
+       </property>
+       <property name="singleStep">
+        <number>2</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>40</y>
+      <width>605</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QComboBox" name="smoothingComboBox">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>GaussianBlur</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MeanBlur</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>MedianBlur</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>BilateralFilter</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ButterworthHighPass</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>ButterworthLowPass</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Kernel Size</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="SmoothingspinBox">
+       <property name="minimum">
+        <number>3</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="singleStep">
+        <number>2</number>
+       </property>
+       <property name="value">
+        <number>3</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_freq">
+       <property name="text">
+        <string>Frequency</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QDoubleSpinBox" name="FrequencySpinBox">
+       <property name="minimum">
+        <double>0.100000000000000</double>
+       </property>
+       <property name="maximum">
+        <double>10.000000000000000</double>
+       </property>
+       <property name="singleStep">
+        <double>0.010000000000000</double>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>Order</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="OrderspinBox">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>20</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BlurButton">
+       <property name="text">
+        <string>Smoothing</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1300</x>
+      <y>30</y>
+      <width>134</width>
+      <height>67</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="PhaseButton">
+       <property name="text">
+        <string>RotatePhase</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="PhasespinBox">
+       <property name="maximum">
+        <number>360</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QGroupBox" name="groupBox">
+    <property name="geometry">
+     <rect>
+      <x>1445</x>
+      <y>440</y>
+      <width>161</width>
+      <height>231</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_6">
+     <item>
+      <widget class="QComboBox" name="SavecomboBox"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="NamelineEdit"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="SaveFButton">
+       <property name="text">
+        <string>Save  </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DeleteFButton">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ExecuteButton">
+       <property name="text">
+        <string>Execute</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>290</y>
+      <width>134</width>
+      <height>123</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="FlipVerticalButton">
+       <property name="text">
+        <string>FlipVertical</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="FlipHorizontalButton">
+       <property name="text">
+        <string>FlipHorizontal</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="RotateButton">
+       <property name="text">
+        <string>Rotate</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>1000</x>
+      <y>20</y>
+      <width>234</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="QComboBox" name="EdgeDetectionComboBox">
+       <property name="editable">
+        <bool>false</bool>
+       </property>
+       <property name="currentText">
+        <string/>
+       </property>
+       <property name="currentIndex">
+        <number>-1</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>Canny Edge Detection</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Sobel Operator</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Scharr Operator</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Kernel Size</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="KernelspinBox">
+       <property name="minimum">
+        <number>3</number>
+       </property>
+       <property name="maximum">
+        <number>9</number>
+       </property>
+       <property name="singleStep">
+        <number>2</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>lowThreshold                    highThreshold</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <widget class="QSpinBox" name="EdgespinBox1">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
+       </widget>
+       <widget class="QSpinBox" name="EdgespinBox2">
+        <property name="minimum">
+         <number>0</number>
+        </property>
+        <property name="maximum">
+         <number>255</number>
+        </property>
+       </widget>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>   x                                                y</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8">
+       <item>
+        <widget class="QSpinBox" name="XspinBox">
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="maximum">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="YspinBox">
+         <property name="minimum">
+          <number>-1</number>
+         </property>
+         <property name="maximum">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QPushButton" name="EdgeButton">
+         <property name="text">
+          <string>EdgeDetection</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>460</y>
+      <width>134</width>
+      <height>123</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_8">
+     <item>
+      <widget class="QPushButton" name="UndoButton">
+       <property name="text">
+        <string>Undo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="RedoButton">
+       <property name="text">
+        <string>Redo</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="ResetButton">
+       <property name="text">
+        <string>Reset</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>800</y>
+      <width>541</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="SaveButton">
+       <property name="text">
+        <string>Save Image</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="DeleteButton">
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>277</width>
+      <height>37</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QToolButton" name="LoadButton">
+       <property name="text">
+        <string>Load An Image</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="captureImageButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Capture Image</string>
+       </property>
+       <property name="icon">
+        <iconset theme="camera-photo"/>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="helpButton">
+    <property name="geometry">
+     <rect>
+      <x>1510</x>
+      <y>890</y>
+      <width>132</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Help</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
